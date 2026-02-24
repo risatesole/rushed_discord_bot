@@ -7,7 +7,6 @@ async function maxLengthCutter(message, response, maxLength) {
     const chunks = response.match(/[\s\S]{1,2000}/g);
     for (const chunk of chunks) {
       await message.reply(chunk);
-      
     }
   } else {
     await message.reply(response);
@@ -50,7 +49,9 @@ export default class MessageListener {
       if (message.content.startsWith("bot!")) {
         const question = message.content.slice(4).trim();
 
-        TypingIndicator(message);
+        TypingIndicator(message).catch((err) =>
+          console.error("Typing error:", err),
+        );
 
         try {
           const geminiResponse = await this.geminiHandler.handle(question);
@@ -59,7 +60,6 @@ export default class MessageListener {
 
           const maxLength = 2000;
           await maxLengthCutter(message, geminiResponse, maxLength);
-
         } catch (err) {
           console.error("Error replying to message:", err);
           await message.reply("Error in MessageListener.js");
