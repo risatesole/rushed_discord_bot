@@ -1,8 +1,8 @@
 export default class MessageListener {
-  constructor(client, heyHandler) {
+  constructor(client, heyHandler, geminiHandler) {
     this.client = client;
-
     this.heyHandler = heyHandler;
+    this.geminiHandler = geminiHandler;
   }
 
   listen() {
@@ -28,8 +28,10 @@ export default class MessageListener {
       }
 
       console.log("#########################################");
-      if (message.content === "bot!") {
-        const response = this.heyHandler.handle();
+
+      if (message.content.startsWith("bot!")) {
+        const question = message.content.slice(4).trim();
+        const response = await this.geminiHandler.handle(question);
 
         await message.reply(response);
       }
