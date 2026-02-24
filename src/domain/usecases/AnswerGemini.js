@@ -15,6 +15,9 @@ export default class AnswerGemini {
       });
       return response.text;
     } catch (err) {
+      if (err?.status === 503) {
+        return "The llm api is experiencing high demand right now. Please try again in a few hours or minutes.";
+      }
       console.error("Gemini API error:", err);
       return "The server had an error, try again in ... 1 minute ok?";
     }
