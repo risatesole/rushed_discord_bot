@@ -7,7 +7,7 @@ import HeyHandler from "./application/handlers/HeyHandler.js";
 import GeminiHandler from "./application/handlers/GeminiHandler.js";
 import AnswerGemini from "./domain/usecases/AnswerGemini.js";
 
-const token = process.env.DISCORD_TOKEN;
+const discordToken = process.env.DISCORD_TOKEN;
 
 const sayHey = new SayHey();
 const answerGeminiUseCase = new AnswerGemini();
@@ -15,7 +15,7 @@ const answerGeminiUseCase = new AnswerGemini();
 const heyHandler = new HeyHandler(sayHey);
 const geminiHandler = new GeminiHandler(answerGeminiUseCase);
 
-const discordClient = new DiscordClient(token);
+const discordClient = new DiscordClient(discordToken);
 const client = await discordClient.start();
 
 const listener = new MessageListener(client, heyHandler, geminiHandler);
