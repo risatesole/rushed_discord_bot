@@ -1,23 +1,19 @@
-import { Client, GatewayIntentBits } from "discord.js";
+import DiscordClient from "./infrastructure/discord/DiscordClient.js";
+import MessageListener from "./infrastructure/discord/MessageListener.js";
 
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent, // REQUIRED to read message content
-  ],
-});
+import SayHey from "./domain/usecases/SayHey.js";
+import HeyHandler from "./application/handlers/HeyHandler.js";
 
-client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}`);
-});
+const token = process.env.DISCORD_TOKEN;
 
-client.on("messageCreate", (message) => {
-  // Ignore bot messages
-  if (message.author.bot) return;
+const sayHey = new SayHey();
+const heyHandler = new HeyHandler(sayHey);
+const discordClient = new DiscordClient(token);
 
-  console.log(`[${message.guild.name}] #${message.channel.name}`);
-  console.log(`${message.author.username}: ${message.content}`);
-});
+const client = await discordClient.start();
 
-client.login(process.env.DISCORD_TOKEN);
+const listener = new MessageListener(client, heyHandler);
+
+listener.listen();
+
+console.log("Bot started");
