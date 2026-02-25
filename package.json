@@ -1,0 +1,11 @@
+{
+	"scripts":{
+		 "test": "vitest run"
+	},
+	"devDependencies": {
+		"vitest": "^4.0.18",
+		"vite-tsconfig-paths": "^6.1.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	}
+}
