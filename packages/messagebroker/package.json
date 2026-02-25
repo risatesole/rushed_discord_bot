@@ -1,0 +1,16 @@
+{
+  "name": "@risatesole/messagebroker",
+  "version": "0.1.0",
+  "description": "main module",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist/ node_modules"
+  },
+  "dependencies": {
+    "@risatesole/spotifyadapter": "workspace:^",
+    "@risatesole/discordadapter": "workspace:^"
+  }
+}
