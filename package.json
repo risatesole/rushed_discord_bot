@@ -3,6 +3,7 @@
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "start:core": "pnpm --filter @risatesole/core start",
     "clean": "pnpm -r clean && rm -rf dist/ node_modules"
   },
   "devDependencies": {
