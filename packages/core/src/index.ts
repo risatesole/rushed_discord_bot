@@ -1,5 +1,5 @@
-import spotifyadapter from "@risatesole/spotifyadapter"
+import discordadapter from "@risatesole/discordadapter"
 
-const sp = new spotifyadapter();
+const sp = new discordadapter();
 
 sp.hello();

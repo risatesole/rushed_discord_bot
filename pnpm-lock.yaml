@@ -29,9 +29,14 @@ importers:
 
   packages/core:
     dependencies:
+      '@risatesole/discordadapter':
+        specifier: workspace:^
+        version: link:../discordadapter
       '@risatesole/spotifyadapter':
         specifier: workspace:^
         version: link:../spotifyadapter
+
+  packages/discordadapter: {}
 
   packages/spotifyadapter: {}
 
