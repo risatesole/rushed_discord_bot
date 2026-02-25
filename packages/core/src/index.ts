@@ -1,4 +1,4 @@
-import discordadapter from "@risatesole/discordadapter"
+import discordadapter from '@risatesole/discordadapter';
 
 const sp = new discordadapter();
 
