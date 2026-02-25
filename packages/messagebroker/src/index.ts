@@ -1,6 +1,14 @@
 type MessageHandler<T = any> = (message: T) => void;
 
-export default class MessageBroker {
+export interface MessageBrokerInterface {
+  subscribe<T = any>(topic: string, handler: MessageHandler<T>): void;
+
+  publish<T = any>(topic: string, message: T): void;
+
+  unsubscribe<T = any>(topic: string, handler: MessageHandler<T>): void;
+}
+
+export default class MessageBroker implements MessageBrokerInterface {
   private topics: Map<string, MessageHandler[]> = new Map();
 
   subscribe(topic: string, handler: MessageHandler) {
@@ -28,9 +36,7 @@ export default class MessageBroker {
 
     this.topics.set(
       topic,
-      handlers.filter(h => h !== handler)
+      handlers.filter((h) => h !== handler),
     );
   }
 }
-
-
