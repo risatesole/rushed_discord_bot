@@ -1,6 +1,8 @@
+import MessageBroker, { MessageBrokerInterface } from '@risatesole/messagebroker';
 import discordadapter from '@risatesole/discordadapter';
 
-const sp = new discordadapter();
+const messagebroker: MessageBrokerInterface = new MessageBroker();
+const discord = new discordadapter(messagebroker);
 
-sp.hello();
-sp.run();
+discord.hello();
+discord.run();

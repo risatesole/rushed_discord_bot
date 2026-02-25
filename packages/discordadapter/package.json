@@ -10,6 +10,7 @@
     "clean": "rm -rf dist/ node_modules"
   },
   "dependencies": {
-    "discord.js": "^14.25.1"
+    "discord.js": "^14.25.1",
+    "@risatesole/messagebroker": "workspace:^"
   }
 }

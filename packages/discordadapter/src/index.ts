@@ -1,8 +1,12 @@
+import { MessageBrokerInterface } from '@risatesole/messagebroker';
 import { Client, GatewayIntentBits, Events } from 'discord.js';
-
 export default class discordadapter {
   client;
-  constructor() {
+  private messageBroker:MessageBrokerInterface;
+  constructor(messageBroker:MessageBrokerInterface) {
+
+    this.messageBroker = messageBroker
+
     this.client = new Client({
       intents: [
         GatewayIntentBits.Guilds,
