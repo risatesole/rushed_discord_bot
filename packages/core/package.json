@@ -1,5 +1,5 @@
 {
-  "name": "@risatesole/app",
+  "name": "@risatesole/core",
   "version": "0.1.0",
   "description": "main module",
   "types": "dist/index.d.ts",
