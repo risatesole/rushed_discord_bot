@@ -1,0 +1,8 @@
+node_modules
+dist
+.vscode
+*.log
+*.lock
+packages/**/dist
+packages/**/node_modules
+retired

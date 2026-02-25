@@ -1,11 +1,16 @@
 {
-	"scripts":{
-		 "test": "vitest run"
-	},
-	"devDependencies": {
-		"vitest": "^4.0.18",
-		"vite-tsconfig-paths": "^6.1.1",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.9.3"
-	}
+  "scripts": {
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "pnpm -r clean && rm -rf dist/ node_modules"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^25.3.0",
+    "vitest": "^4.0.18",
+    "vite-tsconfig-paths": "^6.1.1",
+    "prettier": "^3.8.1"
+  }
 }

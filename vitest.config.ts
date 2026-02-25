@@ -6,11 +6,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-    include: ['packages/**/src/**/*.spec.ts'], 
+    include: ['packages/**/src/**/*.spec.ts'],
     exclude: ['**/dist/**', '**/node_modules/**'],
     coverage: {
       reporter: ['text', 'lcov'],
       exclude: ['**/dist/**', '**/node_modules/**'],
-    }
+    },
   },
 });
