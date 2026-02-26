@@ -2,10 +2,9 @@ import { MessageBrokerInterface } from '@risatesole/messagebroker';
 import { Client, GatewayIntentBits, Events } from 'discord.js';
 export default class discordadapter {
   client;
-  private messageBroker:MessageBrokerInterface;
-  constructor(messageBroker:MessageBrokerInterface) {
-
-    this.messageBroker = messageBroker
+  private messageBroker: MessageBrokerInterface;
+  constructor(messageBroker: MessageBrokerInterface) {
+    this.messageBroker = messageBroker;
 
     this.client = new Client({
       intents: [
@@ -52,7 +51,8 @@ export default class discordadapter {
         roles: message.member ? message.member.roles.cache.map((role) => role.name) : [],
       };
 
-      console.log(JSON.stringify(data, null, 2));
+      // uncoment this line to send message broker every single message
+      // this.messageBroker.publish("discord.message", data);
 
       if (message.content === 'ping') {
         message.reply('pong');
