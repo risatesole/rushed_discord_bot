@@ -1,5 +1,29 @@
 type MessageHandler<T = any> = (message: T) => void;
 
+/**
+ * Interface for a simple publish/subscribe message broker.
+ *
+ * @example
+ * ```ts
+ * import MessageBroker, { MessageBrokerInterface } from '@risatesole/messagebroker';
+ *
+ * // Use the interface type
+ * const broker: MessageBrokerInterface = new MessageBroker();
+ * 
+ * // Subscriber 1
+ * broker.subscribe("greeting", (msg) => {
+ *   console.log("Subscriber 1 received:", msg);
+ * });
+ * 
+ * // Subscriber 2
+ * broker.subscribe("greeting", (msg) => {
+ *   console.log("Subscriber 2 received:", msg.toUpperCase());
+ * });
+ * 
+ * // Publish a message
+ * broker.publish("greeting", "hello world");
+ * ```
+ */
 export interface MessageBrokerInterface {
   subscribe<T = any>(topic: string, handler: MessageHandler<T>): void;
 
@@ -8,6 +32,30 @@ export interface MessageBrokerInterface {
   unsubscribe<T = any>(topic: string, handler: MessageHandler<T>): void;
 }
 
+/**
+ * Simple publish/subscribe message broker implementation.
+ *
+ * @example
+ * ```ts
+ * import MessageBroker, { MessageBrokerInterface } from '@risatesole/messagebroker';
+ *
+ * // Use the interface type
+ * const broker: MessageBrokerInterface = new MessageBroker();
+ * 
+ * // Subscriber 1
+ * broker.subscribe("greeting", (msg) => {
+ *   console.log("Subscriber 1 received:", msg);
+ * });
+ * 
+ * // Subscriber 2
+ * broker.subscribe("greeting", (msg) => {
+ *   console.log("Subscriber 2 received:", msg.toUpperCase());
+ * });
+ * 
+ * // Publish a message
+ * broker.publish("greeting", "hello world");
+ * ```
+ */
 export default class MessageBroker implements MessageBrokerInterface {
   private topics: Map<string, MessageHandler[]> = new Map();
 
